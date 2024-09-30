@@ -20,7 +20,7 @@ const Router = createBrowserRouter([
         children: [
             // Page d'inscription
             {
-                path: '/signup',
+                path: 'signup',
                 element: (
                     <>
                         <h2>Inscription</h2>
@@ -29,7 +29,7 @@ const Router = createBrowserRouter([
             },
             // Page de connexion
             {
-                path: '/login',
+                path: 'login',
                 element: (
                     <>
                         <h2>Connexion</h2>
@@ -39,7 +39,7 @@ const Router = createBrowserRouter([
 
             // Page de verification d'otp
             {
-                path: '/verify-otp',
+                path: 'verify-otp',
                 element: (
                     <>
                         <h2>verify otp</h2>
@@ -49,10 +49,10 @@ const Router = createBrowserRouter([
 
             // Page de Resend otp
             {
-                path: '/resend-otp',
+                path: 'resend-otp',
                 element: (
                     <>
-                        <h2>verify otp</h2>
+                        <h2>resend otp</h2>
                     </>
                 )
             },
@@ -68,11 +68,20 @@ const Router = createBrowserRouter([
                 children: [
                     // Get one user information
                     {
-                        path: ':userID',
+                        path: '/:userID/profile',
                         element: (<>
                             <h1>Here user Info</h1>
                         </>)
                     },
+
+                    // Update users
+                    {
+                        path: '/profile',
+                        element: (<>
+                            <h1>Here user Info setting</h1>
+                        </>)
+                    },
+
                 ]
             },
 
