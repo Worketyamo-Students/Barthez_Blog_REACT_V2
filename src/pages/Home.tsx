@@ -1,8 +1,11 @@
 import React from 'react'
+import Navbar from '../components/custom/Navbar'
 
 const Home: React.FC = () => {
   return (
-    <div>Home</div>
+    <div className='darkBG min-h-screen'>
+      <Navbar />
+    </div>
   )
 }
 

@@ -9,15 +9,15 @@
     --card-foreground: 240 10% 3.9%;
     --popover: 0 0% 100%;
     --popover-foreground: 240 10% 3.9%;
-    --primary: 240 5.9% 10%;
+    --primary: 222 65% 50%;
     --primary-foreground: 0 0% 98%;
-    --secondary: 240 4.8% 95.9%;
+    --secondary: 194, 100%, 18%;
     --secondary-foreground: 240 5.9% 10%;
-    --muted: 240 4.8% 95.9%;
+    --muted: 194, 100%, 18%;
     --muted-foreground: 240 3.8% 46.1%;
-    --accent: 240 4.8% 95.9%;
+    --accent: 194, 100%, 18%;
     --accent-foreground: 240 5.9% 10%;
-    --destructive: 0 84.2% 60.2%;
+    --destructive: 2, 78%, 59%;
     --destructive-foreground: 0 0% 98%;
     --border: 240 5.9% 90%;
     --input: 240 5.9% 90%;
@@ -27,7 +27,7 @@
     --chart-3: 197 37% 24%;
     --chart-4: 43 74% 66%;
     --chart-5: 27 87% 67%;
-    --radius: 0.5rem
+    --radius: 0.5rem;
   }
   .dark {
     --background: 240 10% 3.9%;
@@ -53,7 +53,7 @@
     --chart-2: 160 60% 45%;
     --chart-3: 30 80% 55%;
     --chart-4: 280 65% 60%;
-    --chart-5: 340 75% 55%
+    --chart-5: 340 75% 55%;
   }
 }
 @layer base {
@@ -62,5 +62,117 @@
   }
   body {
     @apply bg-background text-foreground;
+  }
+
+  .signup {
+    position: relative;
+    background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
+      url("/public/bloc-pg.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+  .darkBG {
+    background-image: linear-gradient(
+        45deg,
+        rgb(46, 46, 46) 0%,
+        rgb(46, 46, 46) 22%,
+        rgb(81, 81, 81) 22%,
+        rgb(81, 81, 81) 75%,
+        rgb(115, 115, 115) 75%,
+        rgb(115, 115, 115) 77%,
+        rgb(150, 150, 150) 77%,
+        rgb(150, 150, 150) 82%,
+        rgb(184, 184, 184) 82%,
+        rgb(184, 184, 184) 93%,
+        rgb(219, 219, 219) 93%,
+        rgb(219, 219, 219) 98%,
+        rgb(253, 253, 253) 98%,
+        rgb(253, 253, 253) 100%
+      ),
+      linear-gradient(
+        135deg,
+        rgb(46, 46, 46) 0%,
+        rgb(46, 46, 46) 22%,
+        rgb(81, 81, 81) 22%,
+        rgb(81, 81, 81) 75%,
+        rgb(115, 115, 115) 75%,
+        rgb(115, 115, 115) 77%,
+        rgb(150, 150, 150) 77%,
+        rgb(150, 150, 150) 82%,
+        rgb(184, 184, 184) 82%,
+        rgb(184, 184, 184) 93%,
+        rgb(219, 219, 219) 93%,
+        rgb(219, 219, 219) 98%,
+        rgb(253, 253, 253) 98%,
+        rgb(253, 253, 253) 100%
+      ),
+      linear-gradient(
+        22.5deg,
+        rgb(46, 46, 46) 0%,
+        rgb(46, 46, 46) 22%,
+        rgb(81, 81, 81) 22%,
+        rgb(81, 81, 81) 75%,
+        rgb(115, 115, 115) 75%,
+        rgb(115, 115, 115) 77%,
+        rgb(150, 150, 150) 77%,
+        rgb(150, 150, 150) 82%,
+        rgb(184, 184, 184) 82%,
+        rgb(184, 184, 184) 93%,
+        rgb(219, 219, 219) 93%,
+        rgb(219, 219, 219) 98%,
+        rgb(253, 253, 253) 98%,
+        rgb(253, 253, 253) 100%
+      ),
+      linear-gradient(
+        157.5deg,
+        rgb(46, 46, 46) 0%,
+        rgb(46, 46, 46) 22%,
+        rgb(81, 81, 81) 22%,
+        rgb(81, 81, 81) 75%,
+        rgb(115, 115, 115) 75%,
+        rgb(115, 115, 115) 77%,
+        rgb(150, 150, 150) 77%,
+        rgb(150, 150, 150) 82%,
+        rgb(184, 184, 184) 82%,
+        rgb(184, 184, 184) 93%,
+        rgb(219, 219, 219) 93%,
+        rgb(219, 219, 219) 98%,
+        rgb(253, 253, 253) 98%,
+        rgb(253, 253, 253) 100%
+      ),
+      linear-gradient(90deg, rgb(58, 58, 58), rgb(76, 76, 76));
+    background-blend-mode: overlay, overlay, overlay, overlay, normal;
+  }
+
+  .darkError {
+    background: linear-gradient(
+        326deg,
+        rgba(236, 236, 236, 0.04) 0%,
+        rgba(236, 236, 236, 0.04) 6%,
+        rgba(157, 157, 157, 0.04) 6%,
+        rgba(157, 157, 157, 0.04) 29%,
+        rgba(77, 77, 77, 0.04) 29%,
+        rgba(77, 77, 77, 0.04) 100%
+      ),
+      linear-gradient(
+        164deg,
+        rgba(236, 236, 236, 0.04) 0%,
+        rgba(236, 236, 236, 0.04) 36%,
+        rgba(157, 157, 157, 0.04) 36%,
+        rgba(157, 157, 157, 0.04) 61%,
+        rgba(77, 77, 77, 0.04) 61%,
+        rgba(77, 77, 77, 0.04) 100%
+      ),
+      linear-gradient(
+        336deg,
+        rgba(236, 236, 236, 0.04) 0%,
+        rgba(236, 236, 236, 0.04) 64%,
+        rgba(157, 157, 157, 0.04) 64%,
+        rgba(157, 157, 157, 0.04) 69%,
+        rgba(77, 77, 77, 0.04) 69%,
+        rgba(77, 77, 77, 0.04) 100%
+      ),
+      linear-gradient(90deg, rgb(0, 0, 0), rgb(0, 0, 0));
   }
 }
