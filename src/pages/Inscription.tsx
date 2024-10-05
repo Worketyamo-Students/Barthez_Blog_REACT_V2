@@ -1,5 +1,5 @@
 "use client"
-import { AiFillEyeInvisible } from "react-icons/ai";
+
 import React from 'react'
 import { AiFillEye } from "react-icons/ai";
 import { zodResolver } from "@hookform/resolvers/zod"
@@ -17,7 +17,11 @@ import {
 import { Input } from '../components/ui/input'
 import { Link } from 'react-router-dom'
 import logo from '/public/logo-univere-blog.png'
-import { passwordRegex } from "../global/constant/Constants";
+import { passwordRegex, USER } from "../global/constant/Constants";
+import { AiFillEyeInvisible } from "react-icons/ai";
+import axios from 'axios'
+import { useToast } from "../hooks/use-toast"
+import { Toaster } from '../components/ui/toaster';
 
 // Define your form schema using zod
 const formSchema = z.object({
@@ -79,15 +83,35 @@ const Inscription: React.FC = () => {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
   })
-
+  const { toast } = useToast();
   // 2. Define a submit handler.
   function onSubmit(values: z.infer<typeof formSchema>) {
     console.log(values);
+
+    axios.post(`${USER}signup`, {
+      name: `${values.secondname} ${values.firstname}`,
+      email: values.email,
+      password: values.password
+    })
+      .then(response => {
+        setMessage(`${response.data}`)
+        console.log(response.data);
+
+        toast({
+          description: "Vous venez de recevoir un code de vérification par email.",
+        })
+      })
+      .catch(error => {
+        console.log(error);
+        throw new Error(`Erreur lors de l'appel d'API ${error}`);
+      })
+
+
   }
 
   const [termsAccepted, setTermsAccepted] = React.useState<boolean>(false);
   const [passwordVisible, setPasswordVisible] = React.useState(false);
-
+  const [message, setMessage] = React.useState<string>('')
   return (
     <div className='signup container flex items-center justify-center py-2 md:py-4 min-h-screen'>
       <Form {...form}>
@@ -235,9 +259,15 @@ const Inscription: React.FC = () => {
               </Link>
             </span>
           </div>
+          {message &&
+
+            <p className="text-xs md:text-sm text-destructive font-medium">
+              {message}
+            </p>
+          }
 
           <Button
-            className="w-fit mx-auto px-6 md:px-10 py-3 md:py-5 before:ease relative overflow-hidden border border-primary bg-primary transition-all before:absolute before:right-0 before:top-0 before:h-12 before:w-6 before:translate-x-12 before:rotate-6 before:bg-white before:opacity-10 before:duration-700 hover:before:-translate-x-40"
+            className="w-fit mx-auto my-3 px-6 md:px-10 py-3 md:py-5 before:ease relative overflow-hidden border border-primary bg-primary transition-all before:absolute before:right-0 before:top-0 before:h-12 before:w-6 before:translate-x-12 before:rotate-6 before:bg-white before:opacity-10 before:duration-700 hover:before:-translate-x-40"
             type="submit"
             disabled={!termsAccepted}
           >
@@ -258,8 +288,10 @@ const Inscription: React.FC = () => {
         </form>
       </Form>
 
+      <Toaster />
     </div>
   )
 }
+
 
 export default Inscription

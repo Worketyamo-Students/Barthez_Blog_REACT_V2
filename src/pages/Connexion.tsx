@@ -17,7 +17,8 @@ import {
 import { Input } from '../components/ui/input'
 import { Link } from 'react-router-dom'
 import logo from '/public/logo-univere-blog.png'
-import { passwordRegex } from "../global/constant/Constants";
+import { passwordRegex, USER } from "../global/constant/Constants";
+import axios from "axios";
 
 
 // Define your form schema using zod
@@ -58,6 +59,19 @@ const Connexion: React.FC = () => {
   // 2. Define a submit handler.
   function onSubmit(values: z.infer<typeof formSchema>) {
     console.log(values);
+
+    axios.post(`${USER}login`, {
+      email: values.email,
+      password: values.password
+    })
+      .then(response => {
+        console.log(response.data);
+      })
+      .catch(error => {
+        console.log(error);
+        throw new Error(`Erreur lors de l'appel d'API ${error}`);
+      })
+
   }
 
   const [termsAccepted, setTermsAccepted] = React.useState<boolean>(false);

@@ -6,10 +6,11 @@ import {
     TooltipProvider,
     TooltipTrigger,
 } from "../ui/tooltip"  
+import { Link } from "react-router-dom";
 
 const MoreBtn: React.FC = () => {
     return (
-        <div>
+        <Link to={'blog/new/'}>
             <TooltipProvider>
                 <Tooltip>
                     <TooltipTrigger asChild>
@@ -26,7 +27,7 @@ const MoreBtn: React.FC = () => {
                     </TooltipContent>
                 </Tooltip>
             </TooltipProvider>
-        </div>
+        </Link>
     )
 }
 

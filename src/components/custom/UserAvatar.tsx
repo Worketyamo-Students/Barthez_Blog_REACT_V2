@@ -1,8 +1,7 @@
+import React from 'react'
 import { AiOutlineUser } from "react-icons/ai";
 import { BiLogOut } from "react-icons/bi";
 import { RxDashboard } from "react-icons/rx";
-import React from 'react'
-
 import {
     Avatar,
     AvatarFallback,
@@ -17,6 +16,7 @@ import {
     DropdownMenuSeparator,
     DropdownMenuTrigger,
 } from "../ui/dropdown-menu"
+import { Link } from 'react-router-dom';
 
 
 const UserAvatar: React.FC = () => {
@@ -24,34 +24,33 @@ const UserAvatar: React.FC = () => {
         <>
             <DropdownMenu>
                 <DropdownMenuTrigger>
-                    <button
-                        className='border-2 rounded-full'
-
-                    >
-                        <Avatar>
-                            <AvatarImage
-                                src="https://github.com/shadcn.png"
-                                alt="@shadcn" 
-                            />
-                            <AvatarFallback>CN</AvatarFallback>
-                        </Avatar>
-                    </button>
+                    <Avatar className='border-2 cursor-pointer'>
+                        <AvatarImage
+                            src="https://github.com/shadcn.png"
+                            alt="@shadcn"
+                        />
+                        <AvatarFallback>CN</AvatarFallback>
+                    </Avatar>
                 </DropdownMenuTrigger>
 
-                <DropdownMenuContent className="py-2 px-2 bg-black/70 text-light">
+                <DropdownMenuContent className="py-2 px-2 bg-black/95 text-light">
                     <DropdownMenuLabel className="md:text-xl text-center ">
                         Barthez Kenwou
-                        </DropdownMenuLabel>
+                    </DropdownMenuLabel>
                     <DropdownMenuSeparator />
 
                     <DropdownMenuGroup className="mb-7">
                         <DropdownMenuItem>
                             <AiOutlineUser />
-                            <span>Profile</span>
+                            <Link to={"/:id/profile"}>
+                                Profile
+                            </Link>
                         </DropdownMenuItem>
                         <DropdownMenuItem>
                             <RxDashboard />
-                            <span>Dashboard</span>
+                            <Link to={"/:id/dashboard"}>
+                                Dashboard
+                            </Link>
                         </DropdownMenuItem>
                     </DropdownMenuGroup>
 
